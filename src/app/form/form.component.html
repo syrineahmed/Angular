@@ -1,0 +1,49 @@
+<p>form Control</p>
+
+
+<label>Login</label>
+<input type="text" [formControl]="login">
+
+
+<label>Password</label>
+<input type="text" [formControl]="pwd"> <!--rbato ma les variable -->
+<input type ="submit" value="Save" (click)="save()" [disabled]="login.invalid || pwd.invalid">
+
+
+<p>form Group</p>
+<!-- <form [formGroup]="registerForm">  c est une balise qui regroupe lkol maabdhhom
+<label>Login</label>
+<input type="text" formControlName="login">
+
+
+<label>Password</label>
+<input type="text" formControlName="pwd"> rbato ma les variable
+<input type ="submit" value="Save" (click)="save()" [disabled]="registerForm.invalid">
+</form> -->
+<form [formGroup]="registerForm">
+  <div class="form-group">
+    <label >Login</label>
+    <input type="email" class="form-control" formControlName="login" aria-describedby="emailHelp" placeholder="Enter Login">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['login'].invalid && this.registerForm.controls['login'].touched">
+    <p *ngIf="this.registerForm.controls['login'].hasError('required')">login required</p>
+    <p *ngIf="this.registerForm.controls['login'].hasError('minlength')">login minLength 6 </p>
+   <!-- <p *ngIf="this.registerForm.get('login')?.hasError('required')">login required</p> ken tkhdm bl get -->
+
+  </div>
+  <div class="form-group">
+    <label >Password</label>
+    <input type="password" class="form-control" formControlName="pwd"  placeholder="Password">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['pwd'].invalid && this.registerForm.controls['pwd'].touched">
+    <p *ngIf="this.registerForm.controls['pwd'].hasError('required')">password required</p>
+    <p *ngIf="this.registerForm.controls['pwd'].hasError('pattern')"> password pattern </p>
+
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" (click)="save()">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
+
+</form>
+
+
+

@@ -1,0 +1,30 @@
+
+<input type="text" [(ngModel)]="priceMax"> <!-- hedhy tamlk barre tktb feha -->
+<table class="table">
+  <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>price</th>
+    <th>quantity</th>
+    <th>like</th>
+    <th> incrementer</th>
+    <th> decrementer</th>
+  </tr>
+  <tr *ngFor = "let p of listProduct , let i=index"> <!-- let pour un varibale locale et var pour globale -->
+   <ng-container *ngIf="p.price<priceMax || priceMax==null">
+    <td>{{p.id}}</td>
+    <td>{{p.title}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.quantity}}</td>
+    <td>{{p.like}}</td>
+    <td><button class="btn btn-primary" (click)="incremnte(i)" >like</button></td>
+    <td><button class="btn btn-danger"(click)="decrementer(i)" [disabled]="p.quantity==0">quantite</button></td>
+     <td><button class="btn btn-danger"(click)="supp(p.id)" >Delete</button></td>
+     <td><button class="btn btn-danger" [routerLink]="['/updateP',p.id]" >Update</button></td> <!-- bech yhzni ml composonat l componsant-->
+
+     <td><button class="btn btn-danger" [routerLink]="['/product',p.id]" >Show</button></td> <!-- bech yhzni ml composonat l componsant-->
+
+   </ng-container>
+
+  </tr>
+</table>
