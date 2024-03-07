@@ -1,0 +1,51 @@
+<p>add-product works!</p>
+<form [formGroup]="registerForm">
+  <div class="form-group">
+    <label >ID</label>
+    <input type="number" class="form-control" formControlName="id" aria-describedby="emailHelp" placeholder="Enter id">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['id'].invalid && this.registerForm.controls['id'].touched">
+    <p *ngIf="this.registerForm.controls['id'].hasError('required')">id</p>
+
+  </div>
+  <div class="form-group">
+    <label >title</label>
+    <input type="text" class="form-control" formControlName="titre" aria-describedby="emailHelp" placeholder="Enter title">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['titre'].invalid && this.registerForm.controls['titre'].touched">
+    <p *ngIf="this.registerForm.controls['titre'].hasError('required')">title required</p>
+    <p *ngIf="this.registerForm.controls['titre'].hasError('minlength')">title min length 6</p>
+  </div>
+
+  <div class="form-group">
+    <label >description</label>
+    <input type="text" class="form-control" formControlName="description" aria-describedby="emailHelp" placeholder="Enter title">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['description'].invalid && this.registerForm.controls['description'].touched">
+    <p *ngIf="this.registerForm.controls['description'].hasError('required')">title required</p>
+
+  </div>
+  <div class="form-group">
+    <label >entreprise</label>
+    <input type="text" class="form-control" formControlName="entreprise" aria-describedby="emailHelp" placeholder="Enter title">
+  </div>
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['entreprise'].invalid && this.registerForm.controls['entreprise'].touched">
+    <p *ngIf="this.registerForm.controls['entreprise'].hasError('required')"> entreprise required</p>
+    <p *ngIf="this.registerForm.controls['entreprise'].hasError('minlength')">entreprise min length 3</p>
+  </div>
+
+  <label >disponible</label>
+  <input type="text" class="form-control" formControlName="disponible" aria-describedby="emailHelp" placeholder="Enter title">
+
+  <div class="alert alert-danger" *ngIf="this.registerForm.controls['disponible'].invalid && this.registerForm.controls['entreprise'].touched">
+    <p *ngIf="this.registerForm.controls['disponible'].hasError('required')">title required</p>
+
+  </div>
+
+
+
+
+  <button type="submit" class="btn btn-primary" [routerLink]="['/consulter']" [disabled]="registerForm.invalid" (click)="save()">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
+
+</form>

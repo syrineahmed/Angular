@@ -1,0 +1,28 @@
+<input type="text" [(ngModel)]="idddd">
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>titre</th>
+        <th>description</th>
+        <th>entreprise</th>
+        <th>disponible</th>
+
+    </tr>
+
+    <tr *ngFor = "let p of liststage , let i=index">
+        <ng-container *ngIf="p.id==idddd || idddd ==null">
+            <!-- let pour un varibale locale et var pour globale -->
+            <td>{{p.id}}</td>
+            <td>{{p.titre}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.entreprise}}</td>
+            <td>{{p.disponible}}</td>
+
+            <td><button class="btn btn-danger"(click)="supp(p.id)" >Delete</button></td>
+
+            <td><button class="btn btn-danger" [routerLink]="['/consulter']" >Show</button></td> <!-- bech yhzni ml composonat l componsant-->
+
+
+        </ng-container>
+    </tr>
+</table>
